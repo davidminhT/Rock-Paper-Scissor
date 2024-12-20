@@ -1,4 +1,3 @@
-let currentRound = 0;
 let humanScore = 0;
 let computerScore = 0;
 
@@ -12,12 +11,11 @@ function getComputerChoice()
 function getHumanChoice()
 {
     let userChoice = prompt("Choose Rock, Paper, or Scissor.\n");
-    userChoice.toLowerCase();
-    return userChoice;
+    return userChoice.toLowerCase();
 };
 
 
-function playRound(humanChoice, computerChoice)
+function playRound(currentRound)
 {
     var beats = {'rock': 'paper', 'paper': 'scissor', 'scissor': 'rock'};
 
@@ -31,14 +29,28 @@ function playRound(humanChoice, computerChoice)
     }
     else if(humanSelection == beats[computerSelection])
     {
-        console.log("%s against %s!, you win!\n\n", humanSelection, computerSelection);
+        console.log("%s against %s! you win!\n\n", humanSelection, computerSelection);
         humanScore += 1;
     }
     else if(computerSelection == beats[humanSelection])
     {
-        console.log("%s against %s!, the comptuter win!\n\n", humanSelection, computerSelection);
+        console.log("%s against %s! the comptuter win!\n\n", humanSelection, computerSelection);
         computerScore += 1;
     }
 
     console.log("The current score is Human: %d, Computer: %d. \n\n", humanScore, computerScore);
+};
+
+function playGame(numberOfRounds)
+{
+    for(let i = 1; i <= numberOfRounds; i++)
+    {
+        playRound(i);
+    }
+
+    if(humanScore > computerScore)
+    {
+        console.log("You Win. \n\n");
+    }
+    else{console.log("You Lose. \n\n");}
 };
