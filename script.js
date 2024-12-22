@@ -24,6 +24,7 @@ StartButton.addEventListener("click", (e) => {
     computerScore = 0;
     DisplayRoundEvent.textContent = '';
     DisplayScore.textContent = '';
+    StartButton.disabled = true;
 });
 
 const buttons = document.querySelector("#button");
@@ -90,6 +91,7 @@ function playRound(currentRound, totalRound, humanSelection)
 function determineWinner()
 {    
     gameStarted = false;
+    StartButton.disabled = false;
     if(humanScore > computerScore)
     {
         DisplayScore.textContent = "You win the game."
